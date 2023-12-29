@@ -77,7 +77,8 @@ endmodule
 
 ## Up Counter
 
-![image](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/5b123361-905a-4fb0-a707-38515bd78542)
+![image](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/11e1bd85-c509-4097-a563-7b65f735a9f7)
+
 
 
 ## Down Counter
