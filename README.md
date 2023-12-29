@@ -27,21 +27,11 @@ Note that each bit in this four-bit sequence toggles when the bit before it (the
 
 Starting with four J-K flip-flops connected in such a way to always be in the “toggle” mode, we need to determine how to connect the clock inputs in such a way so that each succeeding bit toggles when the bit before it transitions from 1 to 0.
 
-The Q outputs of each flip-flop will serve as the respective binary bits of the final, three-bit count:
-
-Three-bit “Up” Counter
-![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
-
-
-
 ## DOWN COUNTER 
 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
 
 This type of counter is normally referred to as a Down Counter, (CTD). In a binary or BCD down counter, the count decreases by one for each external clock pulse from some preset value. Special dual purpose IC’s such as the TTL 74LS193 or CMOS CD4510 are 3-bit binary Up or Down counters which have an additional input pin to select either the up or down count mode.
-![image](https://user-images.githubusercontent.com/36288975/169644844-1a14e123-7228-4ed8-81a9-eb937dff4ac8.png)
-
-3-bit Count Down Counter
 
 ### Procedure:
 
@@ -54,33 +44,32 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 7) End the loop.
 8) End the module
 
-
 ### PROGRAM :
 ## Up Counter
 ~~~
-module up_counter(clk, A);
+module up_counter(clk,q1,q2,q3);
 input clk;
-output reg [2:0]A;
-always @(posedge clk)
+output reg q1,q2,q3;
+always@(posedge clk)
 begin
-	A[2]=(((A[0])&(A[1]))^A[2]);
-	A[1]=(A[0])^A[1];
-	A[0]=A[0]^1;
-end
+q3=(q1&q2)^q3;
+q2=q1^q2;
+q1=1^q1;
+end 
 endmodule
 ~~~
 
 ## Down Counter
 ~~~
-module  down_counter(clk,A);
+module COUNTER(clk,q1,q2,q3);
 input clk;
-output reg [2:0]A;
-always @(posedge clk)
+output reg q1,q2,q3;
+always@(posedge clk)
 begin
-	A[2]=(((~A[0])&(~A[1]))^A[2]);
-	A[1]=(~A[0])^A[1];
-	A[0]=1^A[0];
-end 
+q3=((~q2)&(~q1))^q3;
+q2=(~q1)^q2;
+q1=1^q1;
+end
 endmodule
 ~~~
 
@@ -93,20 +82,19 @@ endmodule
 
 ## Down Counter
 
-![293352102-6efdadd7-5d06-46c1-9bf4-54b0e39e6e4d](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/de5798c1-6b60-420d-ae47-6fa42d0fd157)
-
+![293361964-aea0bb57-ab87-4549-9720-c26f35609f2d](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/c045365f-fbe2-458c-90c3-21813ae83c2f)
 
 
 ### TIMING DIGRAMS FOR COUNTER :
 
 ## Up Counter
 
-![293351796-7edc3d1b-8a7d-4803-a44c-ad0f47da6941](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/5f6a44e6-9470-4722-a707-76f04d769bfe)
+![293361908-1fa2cb7e-3c27-4c4e-a7be-71bfbca01bb6](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/291ad076-0141-4f35-a31a-db2c3bf1f421)
 
 
 ## Down Counter
 
-![293352248-64fd4217-35c6-47c9-9a77-c19346e38be0](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/7079682e-4213-4a35-9437-b1c171e6b1c6)
+![293361994-169f6ffa-5e86-4212-9451-25c5981e77b0](https://github.com/Nidhish055/Exp-7-Synchornous-counters-/assets/145979818/d5e295ba-bd33-4d27-92d1-240d9c71b6a6)
 
 
 ### TRUTH TABLE :
