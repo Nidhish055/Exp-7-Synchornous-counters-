@@ -29,7 +29,7 @@ Starting with four J-K flip-flops connected in such a way to always be in the �
 
 The Q outputs of each flip-flop will serve as the respective binary bits of the final, three-bit count:
 
-Four-bit “Up” Counter
+Three-bit “Up” Counter
 ![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
 
 
